@@ -187,3 +187,13 @@ footer {
     transform: scaleX(1.2) translateY(-15px);
   }
 }
+
+.icon-hover {
+  margin: 0 10px;
+  color: #76f5ff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.icon-hover:hover {
+  transform: scale(1.2);
+  color: #00f0ff;
+}

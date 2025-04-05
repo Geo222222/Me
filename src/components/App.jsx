@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AnimatedHeader from './AnimatedHeader.jsx';
 import './App.css';
 import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 
 
@@ -67,6 +68,17 @@ const App = () => {
       </div>
 
       <footer>
+          <div style={{ marginBottom: '10px' }}>
+          <a href="https://github.com/Geo222222" target="_blank" rel="noreferrer">
+            <FaGithub className="icon-hover" size={24} />
+          </a>
+          <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer">
+            <FaLinkedin className="icon-hover" size={24} />
+          </a>
+          <a href="mailto:djuvanemartin@gmail.com">
+            <FaEnvelope className="icon-hover" size={24} />
+          </a>
+        </div>
         &copy; 2025 Djuvane Martin | Web3 Portfolio on GitHub Pages
       </footer>
     </div>
