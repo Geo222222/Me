@@ -2,69 +2,118 @@
 
 ## ✨ Overview
 
-This project is a sleek, modern, and Web3-inspired portfolio site built using **HTML, CSS, and JavaScript**. It highlights your resume and top GitHub projects with stylish, animated cards. Fully responsive and deployable on GitHub Pages, this project serves as your professional digital identity.
+This project is a modern, mobile-optimized portfolio built using **React, Vite, and CSS**. It features animated project cards, a floating contact button, scroll effects (via AOS), and a live contact form powered by Formspree. Built for performance and deployed securely via **GitHub Actions** to GitHub Pages.
 
 ---
 
-## 📁 File Structure
+## 📁 Project Structure
 
 ```
 web3-portfolio/
-├── index.html        # Main HTML landing page
-├── resume.pdf        # Downloadable resume (must be added manually)
-└── README.md         # Project documentation
+├── public/
+│   └── resume.pdf          # Downloadable resume file
+├── src/
+│   ├── App.jsx             # Main React component (UI layout)
+│   ├── App.css             # Custom styling for layout and effects
+│   ├── main.jsx            # App entry point
+│   └── index.css           # Global font import and resets
+├── index.html              # Vite HTML entry
+├── vite.config.js          # Vite config with GitHub Pages base path
+├── tailwind.config.js      # (optional) if Tailwind still in use
+├── package.json            # Scripts and dependencies
+└── .github/workflows/
+    └── deploy.yml          # GitHub Action to auto-deploy to gh-pages
 ```
 
 ---
 
 ## 🚀 Live Demo
 
-Once deployed to GitHub Pages, your site will be available at:
+Once deployed to GitHub Pages:
 ```
 https://<your-username>.github.io/web3-portfolio/
+```
+Example:
+```
+https://geo222222.github.io/web3-portfolio/
 ```
 
 ---
 
 ## 🛠 Features
 
-- 🎨 Futuristic UI with `Orbitron` font and animated styling
-- 🧠 Highlights major repositories with clean descriptions
-- 💾 Resume download button
-- 📱 Fully responsive and mobile-ready
-- 🔗 External links to GitHub projects
+- 🎨 Orbitron font with custom dark-themed UI
+- 💻 Animated scroll effects (AOS)
+- 📄 Resume PDF download from `/public`
+- 📱 Fully mobile-responsive design
+- 📬 Floating Action Button (FAB) to scroll to contact
+- ✅ Verified contact form via Formspree
+- ⚙️ Auto-deploy via GitHub Actions
 
 ---
 
 ## 🔧 How to Use
 
-1. **Clone this repo**:
+1. **Clone the Repo**
 ```bash
 git clone https://github.com/Geo222222/web3-portfolio.git
 cd web3-portfolio
 ```
 
-2. **Add your resume**:
-Rename your resume file to `resume.pdf` and place it in the root directory.
+2. **Install Dependencies**
+```bash
+npm install
+```
 
-3. **Edit your content**:
-Update project descriptions or add more cards in `index.html`.
+3. **Add Your Resume**
+Place your resume in the `/public` folder and name it `resume.pdf`
 
-4. **Deploy via GitHub Pages**:
-   - Go to your repo settings
-   - Under Pages, select `main` branch and `/ (root)`
-   - Save and wait 1–2 minutes
+4. **Dev Preview**
+```bash
+npm run dev
+```
 
-5. **Share your link!**
+5. **Build for Production**
+```bash
+npm run build
+```
+
+6. **Push to GitHub**
+Ensure `vite.config.js` includes your repo name:
+```js
+base: '/web3-portfolio/'
+```
+Then:
+```bash
+git add .
+git commit -m "Initial deploy setup"
+git push origin main
+```
+
+7. **GitHub Pages Setup**
+- GitHub Actions will deploy `dist/` to `gh-pages` branch automatically
+- In your repo settings > Pages, set:
+  - **Branch:** `gh-pages`
+  - **Folder:** `/ (root)`
+
+---
+
+## 🛡️ Deployment Security
+
+- ✅ Uses GitHub Actions — no need to expose keys or manually copy builds
+- ✅ Formspree verified before accepting mail
+- ✅ Public `resume.pdf` access only
+- 🔐 Optional: make repo private for personal use
 
 ---
 
 ## 📌 Customization Ideas
 
-- Add a blog or newsletter section
-- Connect GitHub API to auto-pull repo stats
-- Add wallet login or ENS integration for Web3 identity
-- Dark mode / Light mode toggle
+- GitHub API integration for dynamic repo cards
+- PWA support for offline capability
+- Animated header, testimonials, blog posts
+- Dark/light mode toggle
+- LinkedIn/contact/social footer icons
 
 ---
 
@@ -78,5 +127,5 @@ Fintech Developer • Algo Trader • ML Engineer
 
 ## 📄 License
 
-This project is open-source and free to use for personal portfolios.
+MIT — Free to use and modify for personal or commercial portfolios.
 
