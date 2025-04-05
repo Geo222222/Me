@@ -1,147 +1,189 @@
 /* App.css */
 body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #fff;
-    overflow-x: hidden;
-  }
-  
-  header {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(0,0,0,0.6);
-  }
-  
-  header h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-  }
-  
-  header p {
-    font-size: 1.2em;
-    color: #a3ffcc;
-  }
-  
-  section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-  }
-  
-  .card {
-    background: #1e2a38;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: scale(1.02);
-  }
-  
-  .card h3 {
-    margin-top: 0;
-    color: #f9ff94;
-  }
-  
-  .card a {
-    color: #76f5ff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .resume {
-    text-align: center;
-    margin: 40px 0;
-  }
-  
-  .resume a {
-    background: #76f5ff;
-    color: #000;
-    padding: 15px 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
-  }
-  
-  .resume a:hover {
-    background: #00f0ff;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 30px;
-    color: #aaa;
-    font-size: 0.9em;
-  }
-  
-  .contact {
-    max-width: 800px;
-    margin: 0 auto 60px;
-    padding: 0 20px;
-    text-align: center;
-  }
-  
-  .contact h2 {
-    font-size: 2em;
-    margin-bottom: 30px;
-    color: #76f5ff;
-  }
-  
-  .contact form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .contact input,
-  .contact textarea {
-    padding: 15px;
-    border-radius: 10px;
-    border: none;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1em;
-    background: #1e2a38;
-    color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  }
-  
-  .contact textarea {
-    resize: vertical;
-  }
-  
-  .contact button {
-    background: #76f5ff;
-    color: #000;
-    padding: 15px;
-    border: none;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .contact button:hover {
-    background: #00f0ff;
-  }
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  overflow-x: hidden;
+}
 
-  .fab {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #76f5ff;
-    padding: 15px 20px;
-    border-radius: 50%;
-    font-size: 1.5em;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    transition: background 0.3s ease;
-    z-index: 100;
+header {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  animation: fadeIn 2s ease;
+}
+
+header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #a3ffcc;
+}
+
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  margin-bottom: 30px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.2);
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #f9ff94;
+}
+
+.card a {
+  color: #76f5ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.resume {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.resume a {
+  background: #76f5ff;
+  color: #000;
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.resume a:hover {
+  background: #00f0ff;
+}
+
+.contact {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #76f5ff;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact input,
+.contact textarea {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1em;
+  background: #1e2a38;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.contact textarea {
+  resize: vertical;
+}
+
+.contact button {
+  background: #76f5ff;
+  color: #000;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact button:hover {
+  background: #00f0ff;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #aaa;
+  font-size: 0.9em;
+  animation: fadeIn 2s ease 1.2s both;
+}
+
+.fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #76f5ff;
+  padding: 15px 20px;
+  border-radius: 50%;
+  font-size: 1.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: background 0.3s ease;
+  z-index: 100;
+}
+
+.fab:hover {
+  background: #00f0ff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  .fab:hover {
-    background: #00f0ff;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+.wave-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+  width: 100%;
+  background: linear-gradient(to bottom, #203a43, #2c5364);
+  clip-path: ellipse(75% 100% at 50% 0%);
+  animation: waveMove 10s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: scaleX(1.05) translateY(0);
+  }
+  100% {
+    transform: scaleX(1.2) translateY(-15px);
+  }
+}

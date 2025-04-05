@@ -2,7 +2,7 @@
 
 ## ✨ Overview
 
-This project is a modern, mobile-optimized portfolio built using **React, Vite, and CSS**. It features animated project cards, a floating contact button, scroll effects (via AOS), and a live contact form powered by Formspree. Built for performance and deployed securely via **GitHub Actions** to GitHub Pages.
+This project is a modern, mobile-optimized portfolio built using **React, Vite, Framer Motion, and CSS**. It features an animated wave background, rotating job titles, scroll-based reveal animations, dynamic GitHub repository cards, and a live contact form. It’s built for performance and deployed securely via **GitHub Actions** to GitHub Pages.
 
 ---
 
@@ -14,22 +14,17 @@ web3-portfolio/
 │   └── resume.pdf             # Downloadable resume file
 ├── src/
 │   ├── components/
-│   │   ├── App.jsx            # Main React component (UI layout)
-│   │   └── App.css            # Custom styling for layout and effects
+│   │   ├── App.jsx            # Main layout and dynamic content
+│   │   ├── App.css            # Styling and wave animation
+│   │   └── AnimatedHeader.jsx # Animated rotating title header
 │   ├── main.jsx               # App entry point
-│   └── index.css              # Global font import and resets
+│   └── index.css              # Global styles and font import
 ├── index.html                 # Vite HTML entry
 ├── vite.config.js             # Vite config with GitHub Pages base path
-├── tailwind.config.js         # (optional) if Tailwind still in use
+├── tailwind.config.js         # (optional if Tailwind is enabled)
 ├── package.json               # Scripts and dependencies
 └── .github/workflows/
     └── deploy.yml             # GitHub Action to auto-deploy to gh-pages
-```
-
-> ✅ After moving files to `/src`, make sure paths in `main.jsx` are updated accordingly:
-```js
-import App from './components/App';
-import './components/App.css';
 ```
 
 ---
@@ -49,13 +44,15 @@ https://geo222222.github.io/web3-portfolio/
 
 ## 🛠 Features
 
-- 🎨 Orbitron font with custom dark-themed UI
-- 💻 Animated scroll effects (AOS)
-- 📄 Resume PDF download from `/public`
-- 📱 Fully mobile-responsive design
-- 📬 Floating Action Button (FAB) to scroll to contact
-- ✅ Verified contact form via Formspree
-- ⚙️ Auto-deploy via GitHub Actions
+- 🌊 Animated wave hero background using CSS keyframes
+- 🎥 Framer Motion-powered repo card animations
+- 🔄 Auto-loaded GitHub projects via GitHub API
+- 💼 Resume download button
+- 📱 Fully mobile responsive
+- 🎯 Floating FAB contact button
+- 🧠 Rotating animated job titles
+- 📬 Live Formspree contact form
+- ⚙️ GitHub Actions auto-deploy to Pages
 
 ---
 
@@ -75,11 +72,10 @@ npm install
 3. **Add Your Resume**
 Place your resume in the `/public` folder and name it `resume.pdf`
 
-4. **Dev Preview**
+4. **Run Locally**
 ```bash
 npm run dev
 ```
-> If nothing loads, confirm your `main.jsx` points to the right `App.jsx` path.
 
 5. **Build for Production**
 ```bash
@@ -94,34 +90,25 @@ base: '/web3-portfolio/'
 Then:
 ```bash
 git add .
-git commit -m "Deploy-ready with updated structure"
+git commit -m "Updated with hero wave + dynamic GitHub cards"
 git push origin main
 ```
 
 7. **GitHub Pages Setup**
-- GitHub Actions will deploy `dist/` to `gh-pages` branch automatically
-- In your repo settings > Pages, set:
+- GitHub Actions will deploy `dist/` to `gh-pages`
+- Go to your repo → Settings → Pages:
   - **Branch:** `gh-pages`
   - **Folder:** `/ (root)`
 
 ---
 
-## 🛡️ Deployment Security
-
-- ✅ Uses GitHub Actions — no need to expose keys or manually copy builds
-- ✅ Formspree verified before accepting mail
-- ✅ Public `resume.pdf` access only
-- 🔐 Optional: make repo private for personal use
-
----
-
 ## 📌 Customization Ideas
 
-- GitHub API integration for dynamic repo cards
-- PWA support for offline capability
-- Animated header, testimonials, blog posts
-- Dark/light mode toggle
-- LinkedIn/contact/social footer icons
+- Add blog/testimonials from markdown or CMS
+- Enable dark/light mode toggle
+- Add particle or parallax background instead of wave
+- Animate footer icons and headers
+- Expand to a multi-page portfolio with `react-router-dom`
 
 ---
 
@@ -136,4 +123,3 @@ Fintech Developer • Algo Trader • ML Engineer
 ## 📄 License
 
 MIT — Free to use and modify for personal or commercial portfolios.
-
