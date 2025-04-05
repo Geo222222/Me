@@ -53,7 +53,7 @@ const App = () => {
         ))}
       </section>
 
-      <section className="contact" id="contact" data-aos="fade-up" data-aos-delay="600">
+      {/* <section className="contact" id="contact" data-aos="fade-up" data-aos-delay="600">
         <h2>📬 Contact Me</h2>
         <form action="https://formspree.io/f/mkndvklr" method="POST">
           <input type="text" name="name" placeholder="Your Name" required />
@@ -61,7 +61,7 @@ const App = () => {
           <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
           <button type="submit">Send Message</button>
         </form>
-      </section>
+      </section> */}
 
       <div className="fab">
         <a href="#contact" title="Contact Me">📬</a>
