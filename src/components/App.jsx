@@ -67,7 +67,7 @@ const App = () => {
       </div>
 
       <footer>
-        &copy; 2024 Djuvane Martin | Web3 Portfolio on GitHub Pages
+        &copy; 2025 Djuvane Martin | Web3 Portfolio on GitHub Pages
       </footer>
     </div>
   );
