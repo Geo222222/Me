@@ -25,7 +25,7 @@ const App = () => {
       <AnimatedHeader />
 
       <div className="resume" data-aos="fade-up">
-        <a href="/web3-portfolio/resume.pdf" target="_blank" rel="noopener noreferrer">
+        <a href="/Me/resume.pdf" target="_blank" rel="noopener noreferrer">
           📄 View My Resume
         </a>
       </div>
