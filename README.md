@@ -11,18 +11,25 @@ This project is a modern, mobile-optimized portfolio built using **React, Vite, 
 ```
 web3-portfolio/
 ├── public/
-│   └── resume.pdf          # Downloadable resume file
+│   └── resume.pdf             # Downloadable resume file
 ├── src/
-│   ├── App.jsx             # Main React component (UI layout)
-│   ├── App.css             # Custom styling for layout and effects
-│   ├── main.jsx            # App entry point
-│   └── index.css           # Global font import and resets
-├── index.html              # Vite HTML entry
-├── vite.config.js          # Vite config with GitHub Pages base path
-├── tailwind.config.js      # (optional) if Tailwind still in use
-├── package.json            # Scripts and dependencies
+│   ├── components/
+│   │   ├── App.jsx            # Main React component (UI layout)
+│   │   └── App.css            # Custom styling for layout and effects
+│   ├── main.jsx               # App entry point
+│   └── index.css              # Global font import and resets
+├── index.html                 # Vite HTML entry
+├── vite.config.js             # Vite config with GitHub Pages base path
+├── tailwind.config.js         # (optional) if Tailwind still in use
+├── package.json               # Scripts and dependencies
 └── .github/workflows/
-    └── deploy.yml          # GitHub Action to auto-deploy to gh-pages
+    └── deploy.yml             # GitHub Action to auto-deploy to gh-pages
+```
+
+> ✅ After moving files to `/src`, make sure paths in `main.jsx` are updated accordingly:
+```js
+import App from './components/App';
+import './components/App.css';
 ```
 
 ---
@@ -72,6 +79,7 @@ Place your resume in the `/public` folder and name it `resume.pdf`
 ```bash
 npm run dev
 ```
+> If nothing loads, confirm your `main.jsx` points to the right `App.jsx` path.
 
 5. **Build for Production**
 ```bash
@@ -86,7 +94,7 @@ base: '/web3-portfolio/'
 Then:
 ```bash
 git add .
-git commit -m "Initial deploy setup"
+git commit -m "Deploy-ready with updated structure"
 git push origin main
 ```
 
