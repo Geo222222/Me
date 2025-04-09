@@ -33,10 +33,16 @@ const App = () => {
   };
 
   return (
+    
     <div className="app-wrapper">
       <div className="wave-bg"></div>
+
+
+      <div className="hero-header">
+      <h1>HELLO WORLD!</h1>
       <AnimatedHeader />
 
+    </div>
       <div className="interface-container upgraded-layout">
         {/* Left Panel - GitHub Projects */}
         <div className="repo-panel upgraded-card">

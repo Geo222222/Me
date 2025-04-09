@@ -161,6 +161,24 @@ footer .socials a:hover {
   min-height: 590px;
 }
 
+.hero-header {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.hero-header h1 {
+  font-size: 2.5rem;
+  color: #00ff00;
+  margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero-header h2 {
+  font-size: 1.2rem;
+  color: #fdfd96;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
 
 
 /* === Responsive === */
