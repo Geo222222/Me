@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react';
 import AnimatedHeader from './AnimatedHeader.jsx';
 import './App.css';
 import { motion } from 'framer-motion';
+import Modal from 'react-modal';
+import { Document, Page } from 'react-pdf';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+
+Modal.setAppElement('#root');
 
 const App = () => {
   const [repos, setRepos] = useState([]);
   const [techNews, setTechNews] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
     fetch('https://api.github.com/users/Geo222222/repos')
@@ -15,7 +23,7 @@ const App = () => {
         const sorted = data
           .filter(repo => !repo.fork && repo.description)
           .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-        setRepos(sorted.slice(0, 6));
+        setRepos(sorted);
       });
 
     fetch('https://news-api-flask-tmit.onrender.com/api/tech-news')
@@ -28,26 +36,46 @@ const App = () => {
       });
   }, []);
 
-  const handleFunctionClick = (label) => {
-    alert(`${label} clicked! (Hook your real function here)`);
+  const openModal = (type) => {
+    setModalContent(type);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setModalContent(null);
+  };
+
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  };
+
+  const goToPrevPage = () => setPageNumber((p) => Math.max(p - 1, 1));
+  const goToNextPage = () => setPageNumber((p) => Math.min(p + 1, numPages));
+
+  const extractSkills = () => {
+    const skills = new Set();
+    repos.forEach(repo => {
+      if (repo.language) skills.add(repo.language);
+    });
+    return [...skills];
   };
 
   return (
-    
     <div className="app-wrapper">
       <div className="wave-bg"></div>
 
-
       <div className="hero-header">
-      <h1>HELLO WORLD!</h1>
-      <AnimatedHeader />
+        <h1>HELLO WORLD!</h1>
+        <h2>COMPUTER SCIENTIST</h2>
+        <AnimatedHeader />
+      </div>
 
-    </div>
       <div className="interface-container upgraded-layout">
-        {/* Left Panel - GitHub Projects */}
-        <div className="repo-panel upgraded-card">
+        <div className="repo-panel upgraded-card" id="projects">
           <h2>🚀 Recent Projects</h2>
-          {repos.map((repo, i) => (
+          {repos.slice(0, 6).map((repo, i) => (
             <motion.div
               className="card"
               key={repo.id}
@@ -64,16 +92,13 @@ const App = () => {
           ))}
         </div>
 
-        {/* Right Panel - Functions + News */}
         <div className="function-panel upgraded-card">
           <h2>🧠 Functions</h2>
           <div className="function-grid">
-            <button onClick={() => window.open("/Me/resume.pdf", "_blank")}>📄 Resume</button>
-            <button onClick={() => handleFunctionClick("Projects")}>📁 Projects</button>
-            <button onClick={() => handleFunctionClick("Skills")}>🛠️ Skills</button>
-            <button onClick={() => handleFunctionClick("Testimonials")}>💬 Testimonials</button>
-            <button onClick={() => handleFunctionClick("Blog")}>📰 Blog</button>
-            <button onClick={() => handleFunctionClick("Contact")}>📨 Contact</button>
+            <button onClick={() => openModal('resume')}>📄 Resume</button>
+            <button onClick={() => openModal('projects')}>📁 Projects</button>
+            <button onClick={() => openModal('skills')}>🛠️ Skills</button>
+            <button onClick={() => openModal('contact')}>📨 Contact</button>
           </div>
 
           <div className="info-feed">
@@ -93,14 +118,85 @@ const App = () => {
         </div>
       </div>
 
-      <footer className="footer-bar">
+      <footer className="footer-bar" id="contact">
         <div className="socials">
           <a href="https://github.com/Geo222222" target="_blank" rel="noreferrer"><FaGithub size={22} /></a>
-          <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer"><FaLinkedin size={22} /></a>
+          <a href="https://linkedin.com/in/djuvanemartin" target="_blank" rel="noreferrer"><FaLinkedin size={22} /></a>
           <a href="mailto:djuvanemartin@gmail.com"><FaEnvelope size={22} /></a>
         </div>
-        <p>&copy; 2025 Djuvane Martin | Web3 Portfolio</p>
+        <p>&copy; 2025 Djuvane Martin | MSCS Portfolio</p>
       </footer>
+
+      {/* 🔲 Main Modal Window Popup */}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Popup Modal"
+        className="big-modal"
+        overlayClassName="overlay"
+      >
+        <button className="close-button" onClick={closeModal}>✖</button>
+        
+        {modalContent === 'resume' && (
+          <div>
+            <h2>📄 My Resume</h2>
+            <nav>
+              <button onClick={goToPrevPage} disabled={pageNumber <= 1}>Prev</button>
+              <button onClick={goToNextPage} disabled={pageNumber >= numPages}>Next</button>
+              <p>Page {pageNumber} of {numPages || '?'}</p>
+            </nav>
+
+            <Document
+              file="/resume.pdf"
+              onLoadSuccess={onDocumentLoadSuccess}
+              onLoadError={(error) => {
+                console.error("Error loading PDF:", error);
+              }}
+              loading={<p>Loading PDF…</p>}
+              noData={<p>No PDF file specified.</p>}
+            >
+              <Page pageNumber={pageNumber} />
+            </Document>
+          </div>
+        )}
+
+
+        {modalContent === 'projects' && (
+          <div>
+            <h2>📁 All Public Repositories</h2>
+            <ul>
+              {repos.map(repo => (
+                <li key={repo.id}>
+                  <a href={repo.html_url} target="_blank" rel="noreferrer">{repo.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {modalContent === 'skills' && (
+          <div>
+            <h2>🛠️ Skills From My Repos</h2>
+            <ul>
+              {extractSkills().map((skill, i) => (
+                <li key={i}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {modalContent === 'contact' && (
+          <div>
+            <h2>📨 Contact Me</h2>
+            <form>
+              <label>Name:<input type="text" name="name" /></label>
+              <label>Email:<input type="email" name="email" /></label>
+              <label>Message:<textarea name="message" /></label>
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 };
