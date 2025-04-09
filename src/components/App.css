@@ -1,252 +1,171 @@
-/* App.css */
-body {
+/* === Reset & Global === */
+body, html {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #000000, #1a1a1a);
+  color: #fdfdfd;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
-header {
-  text-align: center;
-  padding: 60px 20px;
-  background: rgba(0, 0, 0, 0.6);
-  animation: fadeIn 2s ease;
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
 }
 
-header h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
+a {
+  color: #00fff7;
+  text-decoration: none;
 }
 
-header p {
-  font-size: 1.2em;
-  color: #a3ffcc;
+a:hover {
+  text-decoration: underline;
 }
 
-section {
-  max-width: 1000px;
-  margin: auto;
-  padding: 40px 20px;
+/* === Layout === */
+.wave-bg {
+  background: url('/path-to-wave.svg') repeat-x bottom;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.interface-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  justify-content: center;
+}
+
+.repo-panel, .function-panel {
+  background: hsla(63, 66%, 21%, 0.09);
+  border-radius: 16px;
+  padding: 2rem;
   backdrop-filter: blur(10px);
-  margin-bottom: 30px;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+  flex: 1 1 200px;
+  min-width: 300px;
+}
+
+/* === Repo Cards === */
+.card {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #00ff00;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  transition: transform 0.2s ease;
 }
 
 .card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.2);
-}
-
-.card:active {
-  transform: scale(0.98);
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 255, 247, 0.3);
 }
 
 .card h3 {
   margin-top: 0;
-  color: #f9ff94;
+  color: #00ff00;
 }
 
-.card a {
-  color: #76f5ff;
-  text-decoration: none;
-  font-weight: bold;
+.card p {
+  color: #ccc;
 }
 
-.resume {
-  text-align: center;
-  margin: 40px 0;
-}
-
-.resume a {
-  background: #76f5ff;
-  color: #000;
-  padding: 15px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.resume a:hover {
-  background: #00f0ff;
-}
-
-.contact {
-  max-width: 800px;
-  margin: 0 auto 60px;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.contact h2 {
-  font-size: 2em;
-  margin-bottom: 30px;
-  color: #76f5ff;
-}
-
-.contact form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact input,
-.contact textarea {
-  padding: 15px;
-  border-radius: 10px;
-  border: none;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1em;
-  background: #1e2a38;
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.contact textarea {
-  resize: vertical;
-}
-
-.contact button {
-  background: #76f5ff;
-  color: #000;
-  padding: 15px;
-  border: none;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.contact button:hover {
-  background: #00f0ff;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #aaa;
-  font-size: 0.9em;
-  animation: fadeIn 2s ease 1.2s both;
-}
-
-.fab {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #76f5ff;
-  padding: 15px 20px;
-  border-radius: 50%;
-  font-size: 1.5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  transition: background 0.3s ease;
-  z-index: 100;
-}
-
-.fab:hover {
-  background: #00f0ff;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.wave-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 300px;
-  width: 100%;
-  background: linear-gradient(to bottom, #203a43, #2c5364);
-  clip-path: ellipse(75% 100% at 50% 0%);
-  animation: waveMove 10s ease-in-out infinite alternate;
-  z-index: -1;
-}
-
-@keyframes waveMove {
-  0% {
-    transform: scaleX(1.05) translateY(0);
-  }
-  100% {
-    transform: scaleX(1.2) translateY(-15px);
-  }
-}
-
-.icon-hover {
-  margin: 0 10px;
-  color: #76f5ff;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-.icon-hover:hover {
-  transform: scale(1.2);
-  color: #00f0ff;
-}
-.interface-container {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem;
-  flex-wrap: wrap;
-}
-
-.repo-panel {
-  flex: 2;
-  min-width: 300px;
-}
-
-.function-panel {
-  flex: 1;
-  min-width: 280px;
-  background: #0f0f0f;
-  padding: 1rem;
-  border-radius: 10px;
-  color: white;
-}
-
+/* === Function Buttons === */
 .function-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 2rem;
 }
 
 .function-grid button {
-  padding: 0.75rem;
-  border: none;
-  background: #1f1f1f;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+  flex: 1 1 45%;
+  background-color: #00ff00;
+  color: #000;
   font-weight: bold;
-  transition: background 0.3s;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.4rem 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .function-grid button:hover {
-  background: #3f3f3f;
+  background-color: #bfff00;
+  transform: scale(1.05);
 }
 
-.info-feed {
-  background: #1a1a1a;
-  padding: 1rem;
-  border-radius: 8px;
+/* === Tech News === */
+.info-feed h3 {
+  color: #fdfd96;
+}
+
+.info-feed li {
+  margin-bottom: 8px;
   font-size: 0.9rem;
 }
 
-.info-feed h3 {
-  margin-bottom: 0.5rem;
+.info-feed a {
+  color: #fdfd96;
+}
+.info-feed a:hover {
+  color: #00ff00;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+}
+
+footer .socials a {
+  margin: 0 10px;
+  color: #fdfd96;
+}
+
+footer .socials a:hover {
+  color: #cccad5;
+}
+
+.repo-panel, .function-panel {
+  border: 2px solid rgba(0, 255, 0, 0.1);
+}
+
+
+/* Scrollbar */
+.repo-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.repo-panel::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+  border-radius: 4px;
+}
+.repo-panel {
+  /* Keep existing styles, then add: */
+  max-height: 550px;
+  overflow-y: auto;
+}
+.repo-panel,
+.function-panel {
+  min-height: 590px;
+}
+
+
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .function-grid button {
+    flex: 1 1 100%;
+  }
 }

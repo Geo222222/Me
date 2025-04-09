@@ -9,7 +9,6 @@ const App = () => {
   const [techNews, setTechNews] = useState([]);
 
   useEffect(() => {
-    // Fetch GitHub repos
     fetch('https://api.github.com/users/Geo222222/repos')
       .then(res => res.json())
       .then(data => {
@@ -19,11 +18,13 @@ const App = () => {
         setRepos(sorted.slice(0, 6));
       });
 
-    // Fetch tech news from Flask server
-    fetch('https://tech-news-api.onrender.com/api/tech-news')
+    fetch('https://news-api-flask-tmit.onrender.com/api/tech-news')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) setTechNews(data);
+      })
+      .catch(err => {
+        console.error("Failed to fetch tech news:", err);
       });
   }, []);
 
@@ -32,14 +33,14 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app-wrapper">
       <div className="wave-bg"></div>
       <AnimatedHeader />
 
-      <div className="interface-container">
-        {/* Left - GitHub Projects */}
-        <div className="repo-panel">
-          <h2>Recent Projects</h2>
+      <div className="interface-container upgraded-layout">
+        {/* Left Panel - GitHub Projects */}
+        <div className="repo-panel upgraded-card">
+          <h2>🚀 Recent Projects</h2>
           {repos.map((repo, i) => (
             <motion.div
               className="card"
@@ -57,21 +58,20 @@ const App = () => {
           ))}
         </div>
 
-        {/* Right - Function Panel */}
-        <div className="function-panel">
-          <h2>Functions</h2>
+        {/* Right Panel - Functions + News */}
+        <div className="function-panel upgraded-card">
+          <h2>🧠 Functions</h2>
           <div className="function-grid">
-            <button onClick={() => window.open("/Me/resume.pdf", "_blank")}>View Resume</button>
-            <button onClick={() => handleFunctionClick("Showcase Projects")}>Projects</button>
-            <button onClick={() => handleFunctionClick("Skills & Tech")}>Skills</button>
-            <button onClick={() => handleFunctionClick("Testimonials")}>Testimonials</button>
-            <button onClick={() => handleFunctionClick("Blog / Articles")}>Blog</button>
-            <button onClick={() => handleFunctionClick("Contact Form")}>Contact</button>
+            <button onClick={() => window.open("/Me/resume.pdf", "_blank")}>📄 Resume</button>
+            <button onClick={() => handleFunctionClick("Projects")}>📁 Projects</button>
+            <button onClick={() => handleFunctionClick("Skills")}>🛠️ Skills</button>
+            <button onClick={() => handleFunctionClick("Testimonials")}>💬 Testimonials</button>
+            <button onClick={() => handleFunctionClick("Blog")}>📰 Blog</button>
+            <button onClick={() => handleFunctionClick("Contact")}>📨 Contact</button>
           </div>
 
-          {/* Info Feed */}
           <div className="info-feed">
-            <h3>Latest in Tech</h3>
+            <h3>🔥 Latest in Tech</h3>
             {techNews.length > 0 ? (
               <ul>
                 {techNews.map((item, i) => (
@@ -81,19 +81,19 @@ const App = () => {
                 ))}
               </ul>
             ) : (
-              <p>Loading news...</p>
+              <p>Loading tech news...</p>
             )}
           </div>
         </div>
       </div>
 
-      <footer>
-        <div style={{ marginBottom: '10px' }}>
-          <a href="https://github.com/Geo222222" target="_blank" rel="noreferrer"><FaGithub size={24} /></a>
-          <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer"><FaLinkedin size={24} /></a>
-          <a href="mailto:djuvanemartin@gmail.com"><FaEnvelope size={24} /></a>
+      <footer className="footer-bar">
+        <div className="socials">
+          <a href="https://github.com/Geo222222" target="_blank" rel="noreferrer"><FaGithub size={22} /></a>
+          <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer"><FaLinkedin size={22} /></a>
+          <a href="mailto:djuvanemartin@gmail.com"><FaEnvelope size={22} /></a>
         </div>
-        &copy; 2025 Djuvane Martin | Web3 Portfolio
+        <p>&copy; 2025 Djuvane Martin | Web3 Portfolio</p>
       </footer>
     </div>
   );
