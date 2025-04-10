@@ -128,10 +128,7 @@ const App = () => {
         {/* Existing Function Panel stays above */}
 
         <div className="info-row">
-          <div className="ai-box">
-            <AISummarizer />
-          </div>
-          <div className="blog-box">
+          <div className="panel">
             <BlogFeed />
           </div>
         </div>
