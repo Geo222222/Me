@@ -103,8 +103,8 @@ For more details on these and other projects, please visit the [Projects](#proje
 Feel free to reach out for collaborations or inquiries:
 
 - **Email**: [your.email@example.com](mailto:your.email@example.com)
-- **LinkedIn**: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- **GitHub**: [github.com/geo222222](https://github.com/geo222222)
+- **LinkedIn**: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofileusername)
+- **GitHub**: [github.com/geo222222](https://github.com/yourgithubusername)
 
 ---
 
