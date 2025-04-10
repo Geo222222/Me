@@ -8,11 +8,13 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import CryptoTicker from './CryptoTicker.jsx';
 import AISummarizer from './AISummarizer';
 import BlogFeed from './BlogFeed';
-
+import StockTicker from './StockTicker';
+import DisclaimerTicker from './DisclaimerTicker';
 
 Modal.setAppElement('#root');
 
 const App = () => {
+  // 📦 State Hooks
   const [repos, setRepos] = useState([]);
   const [techNews, setTechNews] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -20,6 +22,7 @@ const App = () => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
+  // 🔄 Data Fetching
   useEffect(() => {
     fetch('https://api.github.com/users/Geo222222/repos')
       .then(res => res.json())
@@ -40,24 +43,7 @@ const App = () => {
       });
   }, []);
 
-  const openModal = (type) => {
-    setModalContent(type);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setModalContent(null);
-  };
-
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-    setPageNumber(1);
-  };
-
-  const goToPrevPage = () => setPageNumber((p) => Math.max(p - 1, 1));
-  const goToNextPage = () => setPageNumber((p) => Math.min(p + 1, numPages));
-
+  // 🧠 Helper Functions
   const extractSkills = () => {
     const skills = new Set();
     repos.forEach(repo => {
@@ -66,17 +52,41 @@ const App = () => {
     return [...skills];
   };
 
+  // 📄 PDF Navigation
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  };
+  const goToPrevPage = () => setPageNumber(p => Math.max(p - 1, 1));
+  const goToNextPage = () => setPageNumber(p => Math.min(p + 1, numPages));
+
+  // 🔓 Modal Controls
+  const openModal = (type) => {
+    setModalContent(type);
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setModalContent(null);
+  };
+
+  // 🧱 Layout Render
   return (
     <div className="app-wrapper">
       <div className="wave-bg"></div>
-
+      {/* 🧭 Hero Section */}
       <div className="hero-header">
+        {/* <StockTicker /> */}
+        <DisclaimerTicker />
         <CryptoTicker />
+
         <h1>HELLO WORLD!</h1>
-        <h2>COMPUTER SCIENTIST</h2>
         <AnimatedHeader />
+        {/* <h2>COMPUTER SCIENTIST</h2> */}
+
       </div>
 
+      {/* 🚀 Project Cards */}
       <div className="interface-container upgraded-layout">
         <div className="repo-panel upgraded-card" id="projects">
           <h2>🚀 Recent Projects</h2>
@@ -97,6 +107,7 @@ const App = () => {
           ))}
         </div>
 
+        {/* 🧠 Functions Panel */}
         <div className="function-panel upgraded-card">
           <h2>🧠 Functions</h2>
           <div className="function-grid">
@@ -106,6 +117,7 @@ const App = () => {
             <button onClick={() => openModal('contact')}>📨 Contact</button>
           </div>
 
+          {/* 🔥 Tech News Feed */}
           <div className="info-feed">
             <h3>🔥 Latest in Tech</h3>
             {techNews.length > 0 ? (
@@ -119,20 +131,20 @@ const App = () => {
             ) : (
               <p>Loading tech news...</p>
             )}
-
           </div>
-          
         </div>
       </div>
-      <div className="interface-container">
-        {/* Existing Function Panel stays above */}
 
+      {/* 📝 Blog Section */}
+      <div className="interface-container">
         <div className="info-row">
           <div className="panel">
             <BlogFeed />
           </div>
         </div>
       </div>
+
+      {/* 🔗 Footer */}
       <footer className="footer-bar" id="contact">
         <div className="socials">
           <a href="https://github.com/Geo222222" target="_blank" rel="noreferrer"><FaGithub size={22} /></a>
@@ -142,7 +154,7 @@ const App = () => {
         <p>&copy; 2025 Djuvane Martin | MSCS Portfolio</p>
       </footer>
 
-      {/* 🔲 Main Modal Window Popup */}
+      {/* 🔲 Modal Window */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -151,7 +163,8 @@ const App = () => {
         overlayClassName="overlay"
       >
         <button className="close-button" onClick={closeModal}>✖</button>
-        
+
+        {/* 📄 Resume PDF Viewer */}
         {modalContent === 'resume' && (
           <div>
             <h2>📄 My Resume</h2>
@@ -160,23 +173,19 @@ const App = () => {
               <button onClick={goToNextPage} disabled={pageNumber >= numPages}>Next</button>
               <p>Page {pageNumber} of {numPages || '?'}</p>
             </nav>
-
             <Document
               file="/resume.pdf"
               onLoadSuccess={onDocumentLoadSuccess}
-              onLoadError={(error) => {
-                console.error("Error loading PDF:", error);
-              }}
+              onLoadError={(err) => console.error("Error loading PDF:", err)}
               loading={<p>Loading PDF…</p>}
               noData={<p>No PDF file specified.</p>}
             >
               <Page pageNumber={pageNumber} />
             </Document>
           </div>
-          
         )}
 
-
+        {/* 📁 All Repos */}
         {modalContent === 'projects' && (
           <div>
             <h2>📁 All Public Repositories</h2>
@@ -190,6 +199,7 @@ const App = () => {
           </div>
         )}
 
+        {/* 🛠️ Skills List */}
         {modalContent === 'skills' && (
           <div>
             <h2>🛠️ Skills From My Repos</h2>
@@ -201,6 +211,7 @@ const App = () => {
           </div>
         )}
 
+        {/* 📨 Contact Form */}
         {modalContent === 'contact' && (
           <div>
             <h2>📨 Contact Me</h2>

@@ -1,4 +1,7 @@
-.crypto-ticker {
+/* 🔁 Base Ticker Style */
+.crypto-ticker,
+.stock-ticker,
+.disclaimer-ticker {
   overflow: hidden;
   background: black;
   border-bottom: 1px solid lime;
@@ -9,6 +12,7 @@
   white-space: nowrap;
 }
 
+/* 🎞️ Animated Scroll Track */
 .ticker-track {
   display: flex;
   gap: 40px;
@@ -19,6 +23,7 @@
   flex-shrink: 0;
 }
 
+/* 🎬 Marquee Animation */
 @keyframes scroll-left {
   0% {
     transform: translateX(100%);
@@ -26,4 +31,21 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+/* 🟥 Red and Green coloring */
+.green {
+  color: lime;
+}
+
+.red {
+  color: red;
+}
+
+/* 🟨 Disclaimer Specific Styling */
+.disclaimer-ticker {
+  background: #111;
+  color: yellow;
+  font-weight: bold;
+  border-top: 1px solid lime;
 }

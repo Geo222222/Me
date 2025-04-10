@@ -1,0 +1,35 @@
+.ticker-bar {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid limegreen;
+    padding: 4px 10px;
+    background-color: black;
+    color: lime;
+    font-family: monospace;
+    font-size: 14px;
+  }
+  
+  .ticker-item {
+    margin-right: 16px;
+  }
+  
+  .green {
+    color: lime;
+  }
+  
+  .red {
+    color: red;
+  }
+  
+  .disclaimer {
+    border-top: 1px solid limegreen;
+    background-color: #111;
+  }
+  
+  .disclaimer .full-width {
+    flex: 1;
+    color: yellow;
+    font-weight: bold;
+  }
+  

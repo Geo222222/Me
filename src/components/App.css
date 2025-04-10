@@ -1,12 +1,19 @@
-/* === Reset & Global === */
-body, html {
+/* ========================================
+   🌐 GLOBAL RESETS & TYPOGRAPHY
+======================================== */
+body, html, #root {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(to right, #000000, #1a1a1a);
   color: #fdfdfd;
-  min-height: 100vh;
+  min-height: 60vh;
   overflow-x: hidden;
+}
+
+.crypto-ticker {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 h1, h2, h3 {
@@ -19,22 +26,28 @@ a {
   color: #00fff7;
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
 }
 
-/* === Layout === */
+/* ========================================
+   🌊 BACKGROUND DECORATION
+======================================== */
 .wave-bg {
-  background: url('/path-to-wave.svg') repeat-x bottom;
+  background: url('https://www.svgrepo.com/show/349580/wave.svg') repeat-x bottom;
   position: absolute;
   width: 100%;
   height: 100px;
   bottom: 0;
   left: 0;
   z-index: -1;
+  opacity: 0.2;
 }
 
+
+/* ========================================
+   📦 LAYOUT STRUCTURE
+======================================== */
 .interface-container {
   display: flex;
   flex-wrap: wrap;
@@ -43,17 +56,44 @@ a:hover {
   justify-content: center;
 }
 
-.repo-panel, .function-panel {
+/* ========================================
+   🧱 PANEL WRAPPERS (Projects, Functions)
+======================================== */
+.repo-panel,
+.function-panel {
   background: hsla(63, 66%, 21%, 0.09);
+  border: 2px solid rgba(0, 255, 0, 0.1);
   border-radius: 16px;
   padding: 2rem;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 25px rgba(0, 255, 0, 0.1);
   flex: 1 1 200px;
   min-width: 300px;
+  min-height: 590px;
+  max-height: 550px;
+  overflow-y: auto;
 }
 
-/* === Repo Cards === */
+.repo-panel h2,
+.function-panel h2 {
+  color: #00ff00;
+  font-size: 1.4rem;
+  text-shadow: 0 0 5px #00ff00;
+  margin-bottom: 1rem;
+}
+
+/* ===== Scrollbar Styling ===== */
+.repo-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.repo-panel::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+  border-radius: 4px;
+}
+
+/* ========================================
+   🚀 PROJECT CARDS (Repos)
+======================================== */
 .card {
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid #00ff00;
@@ -61,31 +101,29 @@ a:hover {
   padding: 1rem;
   margin-bottom: 1rem;
   color: #fff;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .card:hover {
   transform: scale(1.03);
   box-shadow: 0 0 15px rgba(0, 255, 247, 0.3);
 }
-
 .card h3 {
   margin-top: 0;
   color: #00ff00;
 }
-
 .card p {
   color: #ccc;
 }
 
-/* === Function Buttons === */
+/* ========================================
+   🧠 FUNCTION PANEL BUTTONS
+======================================== */
 .function-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 2rem;
 }
-
 .function-grid button {
   flex: 1 1 45%;
   background-color: #00ff00;
@@ -98,88 +136,78 @@ a:hover {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 .function-grid button:hover {
   background-color: #bfff00;
   transform: scale(1.05);
 }
 
-/* === Tech News === */
+/* ========================================
+   📰 TECH NEWS FEED (Enhanced Bullets)
+======================================== */
+.info-feed {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+}
 .info-feed h3 {
   color: #fdfd96;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 5px #fdfd96;
 }
-
+.info-feed ul {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+}
 .info-feed li {
-  margin-bottom: 8px;
-  font-size: 0.9rem;
+  margin-bottom: 1.2rem; /* More spacing between each item */
+  font-size: 0.95rem;
+  line-height: 1;
 }
-
 .info-feed a {
-  color: #fdfd96;
+  color: #00fff7;
+  transition: color 0.2s ease;
 }
 .info-feed a:hover {
   color: #00ff00;
+  text-decoration: underline;
 }
 
-/* === Footer === */
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  font-size: 0.9rem;
-}
-
-footer .socials a {
-  margin: 0 10px;
-  color: #fdfd96;
-}
-
-footer .socials a:hover {
-  color: #cccad5;
-}
-
-.repo-panel, .function-panel {
-  border: 2px solid rgba(0, 255, 0, 0.1);
-}
-
-
-/* Scrollbar */
-.repo-panel::-webkit-scrollbar {
-  width: 6px;
-}
-.repo-panel::-webkit-scrollbar-thumb {
-  background-color: #00ff00;
-  border-radius: 4px;
-}
-.repo-panel {
-  /* Keep existing styles, then add: */
-  max-height: 550px;
-  overflow-y: auto;
-}
-.repo-panel,
-.function-panel {
-  min-height: 590px;
-}
-
+/* ========================================
+   🧬 HERO HEADER
+======================================== */
 .hero-header {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0rem;
 }
-
+.hero-header h1,
+.hero-header h2,
+.hero-header h3,
+.hero-header p {
+  margin: 0;
+  line-height: 1.2;
+  padding: 0;
+}
 .hero-header h1 {
   font-size: 2.5rem;
   color: #00ff00;
-  margin-bottom: 0.5rem;
   font-family: 'Poppins', sans-serif;
 }
 
-.hero-header h2 {
-  font-size: 1.2rem;
+.hero-header h2,
+.hero-header h3,
+.hero-header p {
+  font-size: 1.1rem;
   color: #fdfd96;
-  font-weight: 400;
   font-family: 'Roboto', sans-serif;
 }
 
+/* ========================================
+   📄 MODAL STYLES
+======================================== */
 .big-modal {
   position: absolute;
   top: 50%;
@@ -196,12 +224,10 @@ footer .socials a:hover {
   padding: 2rem;
   z-index: 999;
 }
-
 .overlay {
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 998;
 }
-
 .close-button {
   position: absolute;
   top: 12px;
@@ -213,32 +239,104 @@ footer .socials a:hover {
   cursor: pointer;
 }
 
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .function-grid button {
-    flex: 1 1 100%;
-  }
+/* ========================================
+   📬 FOOTER STYLES
+======================================== */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+}
+footer .socials a {
+  margin: 0 10px;
+  color: #fdfd96;
+}
+footer .socials a:hover {
+  color: #cccad5;
 }
 
+/* ========================================
+   🧠 BLOG + AI PANELS
+======================================== */
 .info-row {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   padding: 1.5rem 0;
 }
-
 .ai-box, .blog-box {
   flex: 1;
   min-width: 300px;
 }
+.ai-box { max-width: 50%; }
+.blog-box { max-width: 50%; }
 
-.ai-box {
-  max-width: 50%;
+/* ========================================
+   📱 RESPONSIVE MEDIA QUERIES
+======================================== */
+@media (max-width: 768px) {
+  .function-grid button {
+    flex: 1 1 100%;
+  }
+
+  .ai-box, .blog-box {
+    max-width: 100%;
+  }
+
+  .repo-panel,
+  .function-panel {
+    min-width: 100%;
+  }
 }
 
-.blog-box {
-  max-width: 50%;
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
+/* === Blog Feed Grid === */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* === Blog Card Styling === */
+.blog-card {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #00ff00;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.blog-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #00ff00;
+  font-size: 1.1rem;
+}
+
+.blog-description {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: #aaffaa;
+  display: flex;
+  justify-content: space-between;
+}
 
