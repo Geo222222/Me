@@ -6,10 +6,11 @@ import Modal from 'react-modal';
 import { Document, Page } from 'react-pdf';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import CryptoTicker from './CryptoTicker.jsx';
-import AISummarizer from './AISummarizer';
+// import AISummarizer from './AISummarizer';
 import BlogFeed from './BlogFeed';
-import StockTicker from './StockTicker';
+// import StockTicker from './StockTicker';
 import DisclaimerTicker from './DisclaimerTicker';
+import NeuralGridCanvas from './NeuralGridCanvas.jsx';
 
 Modal.setAppElement('#root');
 
@@ -72,8 +73,10 @@ const App = () => {
 
   // 🧱 Layout Render
   return (
-    <div className="app-wrapper">
-      <div className="wave-bg"></div>
+    <>
+      <NeuralGridCanvas />
+      <div className="app-wrapper">
+        <div className="wave-bg"></div>
       {/* 🧭 Hero Section */}
       <div className="hero-header">
         {/* <StockTicker /> */}
@@ -83,6 +86,8 @@ const App = () => {
         <h1>HELLO WORLD!</h1>
         <AnimatedHeader />
         {/* <h2>COMPUTER SCIENTIST</h2> */}
+
+
 
       </div>
 
@@ -225,6 +230,7 @@ const App = () => {
         )}
       </Modal>
     </div>
+    </>
   );
 };
 
