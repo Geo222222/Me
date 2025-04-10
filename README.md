@@ -2,7 +2,15 @@
 
 ## ✨ Overview
 
-This project is a modern, mobile-optimized portfolio built using **React, Vite, Framer Motion, and CSS**. It features an animated wave background, rotating job titles, scroll-based reveal animations, dynamic GitHub repository cards, and a live contact form. It’s built for performance and deployed securely via **GitHub Actions** to GitHub Pages.
+## About
+
+This portfolio is designed to provide an overview of my professional background, highlight key projects, and demonstrate my expertise in various areas of computer science and financial technology.
+
+## Features
+
+- **Responsive Design**: Optimized for various devices and screen sizes.
+- **Project Showcase**: Detailed presentations of selected projects.
+- **Interactive Elements**: Engaging components to enhance user experience.
 
 ---
 
@@ -27,90 +35,81 @@ web3-portfolio/
     └── deploy.yml             # GitHub Action to auto-deploy to gh-pages
 ```
 
----
+## Technologies Used
 
-## 🚀 Live Demo
+The portfolio is built using the following technologies:
 
-Once deployed to GitHub Pages:
-```
-https://<your-username>.github.io/web3-portfolio/
-```
-Example:
-```
-https://geo222222.github.io/web3-portfolio/
-```
+- **Frontend**:
+  - HTML5
+  - CSS3
+  - JavaScript (ES6+)
+  - React.js
 
----
+- **Backend**:
+  - Node.js
+  - Express.js
 
-## 🛠 Features
+- **Styling**:
+  - Tailwind CSS
 
-- 🌊 Animated wave hero background using CSS keyframes
-- 🎥 Framer Motion-powered repo card animations
-- 🔄 Auto-loaded GitHub projects via GitHub API
-- 💼 Resume download button
-- 📱 Fully mobile responsive
-- 🎯 Floating FAB contact button
-- 🧠 Rotating animated job titles
-- 📬 Live Formspree contact form
-- ⚙️ GitHub Actions auto-deploy to Pages
+- **Version Control**:
+  - Git & GitHub
 
----
+- **Deployment**:
+  - GitHub Pages
 
-## 🔧 How to Use
+## Getting Started
 
-1. **Clone the Repo**
-```bash
-git clone https://github.com/Geo222222/web3-portfolio.git
-cd web3-portfolio
-```
+To run this project locally, follow these steps:
 
-2. **Install Dependencies**
-```bash
-npm install
-```
+1. **Clone the repository**:
 
-3. **Add Your Resume**
-Place your resume in the `/public` folder and name it `resume.pdf`
+   ```bash
+   git clone https://github.com/geo222222/Me.git
+   ```
 
-4. **Run Locally**
-```bash
-npm run dev
-```
+2. **Navigate to the project directory**:
 
-5. **Build for Production**
-```bash
-npm run build
-```
+   ```bash
+   cd Me
+   ```
 
-6. **Push to GitHub**
-Ensure `vite.config.js` includes your repo name:
-```js
-base: '/web3-portfolio/'
-```
-Then:
-```bash
-git add .
-git commit -m "Updated with hero wave + dynamic GitHub cards"
-git push origin main
-```
+3. **Install dependencies**:
 
-7. **GitHub Pages Setup**
-- GitHub Actions will deploy `dist/` to `gh-pages`
-- Go to your repo → Settings → Pages:
-  - **Branch:** `gh-pages`
-  - **Folder:** `/ (root)`
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**:
+
+   ```bash
+   npm start
+   ```
+
+   The portfolio should now be running on `http://localhost:3000`.
+
+## Projects
+
+Highlighted projects featured in this portfolio include:
+
+1. **FinTech Dashboard**: A comprehensive dashboard for financial analytics and visualization.
+2. **Algorithmic Trading Bot**: An automated trading system implementing various trading strategies.
+3. **Blockchain-based Voting System**: A secure and transparent voting platform leveraging blockchain technology.
+
+For more details on these and other projects, please visit the [Projects](#projects) section of the portfolio.
+
+## Contact
+
+Feel free to reach out for collaborations or inquiries:
+
+- **Email**: [your.email@example.com](mailto:your.email@example.com)
+- **LinkedIn**: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
+- **GitHub**: [github.com/geo222222](https://github.com/geo222222)
 
 ---
 
-## 📌 Customization Ideas
-
-- Add blog/testimonials from markdown or CMS
-- Enable dark/light mode toggle
-- Add particle or parallax background instead of wave
-- Animate footer icons and headers
-- Expand to a multi-page portfolio with `react-router-dom`
-
----
+Thank you for visiting my page. Your feedback and suggestions are welcome!
+```
 
 ## 🧑‍💻 Author
 
