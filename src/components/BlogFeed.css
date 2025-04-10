@@ -1,0 +1,33 @@
+.blog-feed {
+    padding: 2rem;
+    color: white;
+    background: #0e0e0e;
+    border-top: 2px solid lime;
+    margin-top: 2rem;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .blog-card {
+    background: #1b1b1b;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .blog-card:hover {
+    border-color: lime;
+    transform: scale(1.02);
+  }
+  
+  .blog-card a {
+    color: lime;
+    font-weight: bold;
+  }
+  

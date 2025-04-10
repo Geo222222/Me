@@ -1,0 +1,29 @@
+.crypto-ticker {
+  overflow: hidden;
+  background: black;
+  border-bottom: 1px solid lime;
+  color: lime;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 8px 0;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 40px;
+  animation: scroll-left 60s linear infinite;
+}
+
+.ticker-item {
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

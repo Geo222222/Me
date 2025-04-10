@@ -220,3 +220,23 @@ footer .socials a:hover {
     flex: 1 1 100%;
   }
 }
+
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1.5rem 0;
+}
+
+.ai-box, .blog-box {
+  flex: 1;
+  min-width: 300px;
+}
+
+.ai-box {
+  max-width: 50%;
+}
+
+.blog-box {
+  max-width: 50%;
+}

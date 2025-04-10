@@ -5,6 +5,10 @@ import { motion } from 'framer-motion';
 import Modal from 'react-modal';
 import { Document, Page } from 'react-pdf';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import CryptoTicker from './CryptoTicker.jsx';
+import AISummarizer from './AISummarizer';
+import BlogFeed from './BlogFeed';
+
 
 Modal.setAppElement('#root');
 
@@ -67,6 +71,7 @@ const App = () => {
       <div className="wave-bg"></div>
 
       <div className="hero-header">
+        <CryptoTicker />
         <h1>HELLO WORLD!</h1>
         <h2>COMPUTER SCIENTIST</h2>
         <AnimatedHeader />
@@ -114,10 +119,23 @@ const App = () => {
             ) : (
               <p>Loading tech news...</p>
             )}
+
+          </div>
+          
+        </div>
+      </div>
+      <div className="interface-container">
+        {/* Existing Function Panel stays above */}
+
+        <div className="info-row">
+          <div className="ai-box">
+            <AISummarizer />
+          </div>
+          <div className="blog-box">
+            <BlogFeed />
           </div>
         </div>
       </div>
-
       <footer className="footer-bar" id="contact">
         <div className="socials">
           <a href="https://github.com/Geo222222" target="_blank" rel="noreferrer"><FaGithub size={22} /></a>
@@ -158,6 +176,7 @@ const App = () => {
               <Page pageNumber={pageNumber} />
             </Document>
           </div>
+          
         )}
 
 
